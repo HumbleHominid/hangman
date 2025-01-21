@@ -10,13 +10,13 @@ import { usePrefersDarkMode } from '@/app/lib/hooks/user-prefers-dark';
 export default function Footer() {
 	const footerLinkClass = "flex items-center gap-2 hover:underline hover:underline-offset-4";
 	const prefersDarkMode = usePrefersDarkMode();
-	const gitIcons = [
-		'/icons/github-mark-dark.svg',
-		'/icons/github-mark-white.svg'
-	];
-	const [gitIconSrc, setGitIconSrc] = useState(gitIcons[0])
+	const [gitIconSrc, setGitIconSrc] = useState('')
 
 	useEffect(() => {
+		const gitIcons = [
+			'/icons/github-mark-dark.svg',
+			'/icons/github-mark-white.svg'
+		];
 		setGitIconSrc(gitIcons[prefersDarkMode ? 1: 0])
 	}, [prefersDarkMode])
 

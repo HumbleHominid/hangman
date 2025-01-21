@@ -35,10 +35,10 @@ export default function Key({
 
 	return (
 		<div
-			className={`relative flex flex-col w-16 h-16 items-center border-x-4 border-t-2 border-b-8 rounded-md border-slate-900 dark:border-white ${bgColor}`}
+			className={`relative flex flex-col w-16 h-16 items-center border-x-4 border-t-2 border-b-8 rounded-md border-slate-900 dark:border-white ${bgColor} hover:cursor-pointer`}
 			onClick={() => clickCallback(character)}
 		>
-				<span className="uppercase text-3xl m-auto text-center hover:cursor-pointer select-none">
+				<span className="uppercase text-3xl m-auto text-center select-none">
 					{character}
 				</span>
 				<div className="absolute bottom-1 w-9/12 h-0.5 bg-slate-900 dark:bg-white rounded-sm" />

@@ -1,23 +1,36 @@
 'use client';
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react";
 import HangmanImage from "@/app/ui/hangman/hangman-image";
 import Keyboard from "@/app/ui/keyboard/keyboard";
+import HangmanWord from "./hangman-word";
+import Parser from "rss-parser";
 
 export default function Hangman() {
 	const [missedGuesses, setMissedGuesses] = useState(0);
-	const timerRef = useRef<NodeJS.Timeout | null>(null);
+	const [word, setWord] = useState('');
+	const [guessedLetters, setGuessedLetters] = useState('');
 
 	useEffect(() => {
-		if (timerRef.current !== null) clearInterval(timerRef.current);
-		timerRef.current = setInterval(() => {
-			setMissedGuesses((missedGuesses+1)%7)
-		}, 2*1000);
+		const CORS_PROXY = "https://corsproxy.io/?url=";
+		const isDev = process.env.NODE_ENV === 'development';
+		const rss = (isDev ? CORS_PROXY : '') + 'https://www.merriam-webster.com/wotd/feed/rss2';
+		type customFeed = {feed: string};
+		const parser: Parser<customFeed> = new Parser({
+			customFields: {
+				feed: ['feed']
+			}
+		});
 
-		return (() => {
-			if (timerRef.current !== null) clearInterval(timerRef.current);
-		})
-	});
+		(async () => {
+			const feed = await parser.parseURL(rss);
+			if ('items' in feed && feed.items.length > 0) {
+				if (typeof feed.items[0].title === "string") {
+					setWord(feed.items[0].title);
+				}
+			}
+		})();
+	}, []);
 
 	return (
 		<div className="flex">
@@ -27,8 +40,13 @@ export default function Hangman() {
 					missedGuesses={missedGuesses}
 				/>
 			</div>
-			<div className="w-8/12 flex flex-col m-auto">
+			<div className="w-8/12 flex flex-col m-auto items-center gap-8">
+				{/* TODO: Skeleton for async requests */}
 				{/* The word and guesses goes here */}
+				<HangmanWord
+					word={word}
+					guessedLetters={guessedLetters}
+				/>
 				{/* Keyboard below the guesses */}
 				<Keyboard/>
 			</div>

@@ -19,7 +19,7 @@ export default function Hangman() {
 		const newGuessedLetters = guessedLetters.concat(char);
 		setGuessedLetters(newGuessedLetters);
 		if (!word.includes(char)) {
-			let newMissedGuess = missedGuesses+1;
+			const newMissedGuess = missedGuesses+1;
 			setMissedGuesses(newMissedGuess);
 			if (newMissedGuess === maxMisses) setIsGameOver(true);
 		}

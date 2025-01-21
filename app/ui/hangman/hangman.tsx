@@ -11,6 +11,12 @@ export default function Hangman() {
 	const [word, setWord] = useState('');
 	const [guessedLetters, setGuessedLetters] = useState('');
 
+	const handleKeyClicked = (char: string) => {
+		if (guessedLetters.includes(char)) return;
+		setGuessedLetters(guessedLetters.concat(char));
+		if (!word.includes(char)) setMissedGuesses((missedGuesses+1)%7);
+	}
+
 	useEffect(() => {
 		const CORS_PROXY = "https://corsproxy.io/?url=";
 		const isDev = process.env.NODE_ENV === 'development';
@@ -48,7 +54,11 @@ export default function Hangman() {
 					guessedLetters={guessedLetters}
 				/>
 				{/* Keyboard below the guesses */}
-				<Keyboard/>
+				<Keyboard
+					keyClicked={handleKeyClicked}
+					word={word}
+					guessedLetters={guessedLetters}
+				/>
 			</div>
 		</div>
 	)

@@ -1,8 +1,15 @@
-import Key from "@/app/ui/keyboard/key";
+import Key, { KeyState } from "@/app/ui/keyboard/key";
 
-export default function Keyboard() {
+export default function Keyboard({
+	keyClicked,
+	word,
+	guessedLetters,
+}:{
+	keyClicked: (char:string) => void;
+	word: string;
+	guessedLetters: string;
+}) {
 	const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
-	const clickCallback = (str:string) => {console.log(str);}
 	return (
 		<div className="flex flex-wrap justify-center items-center gap-2">
 			{alphabet.map((letter) => {
@@ -10,7 +17,15 @@ export default function Keyboard() {
 					<Key
 						key={letter}
 						character={letter}
-						clickCallback={clickCallback}
+						clickCallback={keyClicked}
+						keyState={
+							guessedLetters.includes(letter) ?
+								(word.includes(letter) ?
+									KeyState.Correct :
+									KeyState.Incorrect
+								) :
+							KeyState.NotGuessed
+						}
 					/>
 				)
 			})}

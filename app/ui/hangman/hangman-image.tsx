@@ -1,5 +1,6 @@
 import clsx from "clsx";
 import Image from "next/image"
+import { useState, useEffect } from "react";
 
 export default function HangmanImage(
 {
@@ -8,40 +9,31 @@ export default function HangmanImage(
 	missedGuesses: number;
 }) {
 	const hangmanImages = [
-		'/hangman/head.png',
-		'/hangman/body.png',
-		'/hangman/left_leg.png',
-		'/hangman/right_leg.png',
-		'/hangman/left_arm.png',
-		'/hangman/right_arm.png',
+		'/hangman/initial.png',
+		'/hangman/one_miss.png',
+		'/hangman/two_miss.png',
+		'/hangman/three_miss.png',
+		'/hangman/four_miss.png',
+		'/hangman/five_miss.png',
+		'/hangman/six_miss.png',
 	];
+	const [hangmanImage, setHangmanImage] = useState(hangmanImages[0])
+
+	useEffect(() => {
+		if (missedGuesses < 0) missedGuesses = 0;
+		if (missedGuesses >= hangmanImages.length) missedGuesses = hangmanImages.length - 1;
+		setHangmanImage(hangmanImages[missedGuesses]);
+	}, [missedGuesses]);
 
 	return (
 		<div className="relative">
 			<Image
 				width={696}
 				height={950}
-				src="/hangman/stand.png"
-				alt="Hangman Stand"
+				src={hangmanImage}
+				alt="Hangman Image"
 				className="absolute top-0 left-0 filter invert dark:invert-0"
 			/>
-			{hangmanImages.map((src, index) => {
-				return (
-					<Image
-						key={src}
-						width={696}
-						height={950}
-						src={src}
-						alt="Hangman Body Part"
-						className={clsx(
-							"absolute top-0 left-0 filter invert dark:invert-0",
-							{
-								"hidden": index >= missedGuesses
-							}
-						)}
-					/>
-				)
-			})}
 		</div>
 	)
 }

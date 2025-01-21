@@ -30,9 +30,8 @@ export default function Hangman() {
 	}
 
 	useEffect(() => {
-		const CORS_PROXY = "https://corsproxy.io/?url=";
-		const isDev = process.env.NODE_ENV === 'development';
-		const rss = (isDev ? CORS_PROXY : '') + 'https://www.merriam-webster.com/wotd/feed/rss2';
+		const corsProxy = "https://corsproxy.io/?url=";
+		const rss = corsProxy + 'https://www.merriam-webster.com/wotd/feed/rss2';
 		type customFeed = {feed: string};
 		const parser: Parser<customFeed> = new Parser({
 			customFields: {

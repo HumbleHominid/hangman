@@ -41,7 +41,7 @@ export default function Key({
 				<span className="uppercase text-3xl m-auto text-center hover:cursor-pointer select-none">
 					{character}
 				</span>
-				<div className="absolute bottom-1 w-11/12 h-0.5 bg-slate-900 dark:bg-white rounded-sm" />
+				<div className="absolute bottom-1 w-9/12 h-0.5 bg-slate-900 dark:bg-white rounded-sm" />
 		</div>
 	)
 }

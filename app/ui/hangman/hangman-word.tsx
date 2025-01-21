@@ -3,12 +3,14 @@ import clsx from "clsx";
 export default function HangmanWord({
 	word,
 	guessedLetters = '',
+	isGameOver,
 }:{
-	word: string
-	guessedLetters?: string
+	word: string;
+	guessedLetters?: string;
+	isGameOver: boolean;
 }) {
 	return (
-		<div className="flex gap-2">
+		<div className="flex gap-2 h-20">
 			{word.split('').map((char, index) => {
 				return (
 					<div
@@ -19,7 +21,8 @@ export default function HangmanWord({
 							className={clsx(
 								"uppercase text-7xl font-medium m-auto text-center select-none",
 								{
-									'hidden': !guessedLetters.includes(char)
+									'hidden': !isGameOver && !guessedLetters.includes(char),
+									'text-red-800' : isGameOver && !guessedLetters.includes(char)
 								}
 							)}
 						>

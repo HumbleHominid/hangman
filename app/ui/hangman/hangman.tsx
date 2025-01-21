@@ -3,18 +3,30 @@
 import { useEffect, useState } from "react";
 import HangmanImage from "@/app/ui/hangman/hangman-image";
 import Keyboard from "@/app/ui/keyboard/keyboard";
-import HangmanWord from "./hangman-word";
+import HangmanWord from "@/app/ui/hangman/hangman-word";
 import Parser from "rss-parser";
 
 export default function Hangman() {
 	const [missedGuesses, setMissedGuesses] = useState(0);
 	const [word, setWord] = useState('');
 	const [guessedLetters, setGuessedLetters] = useState('');
+	const [isGameOver, setIsGameOver] = useState(false);
+	const maxMisses = 6;
 
 	const handleKeyClicked = (char: string) => {
+		if (isGameOver) return;
 		if (guessedLetters.includes(char)) return;
-		setGuessedLetters(guessedLetters.concat(char));
-		if (!word.includes(char)) setMissedGuesses((missedGuesses+1)%7);
+		const newGuessedLetters = guessedLetters.concat(char);
+		setGuessedLetters(newGuessedLetters);
+		if (!word.includes(char)) {
+			let newMissedGuess = missedGuesses+1;
+			setMissedGuesses(newMissedGuess);
+			if (newMissedGuess === maxMisses) setIsGameOver(true);
+		}
+		else {
+			const isCharGuessed = (char:string) => newGuessedLetters.includes(char);
+			setIsGameOver(word.split('').every(isCharGuessed));
+		}
 	}
 
 	useEffect(() => {
@@ -52,6 +64,7 @@ export default function Hangman() {
 				<HangmanWord
 					word={word}
 					guessedLetters={guessedLetters}
+					isGameOver={isGameOver}
 				/>
 				{/* Keyboard below the guesses */}
 				<Keyboard

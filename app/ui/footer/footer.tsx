@@ -21,7 +21,7 @@ export default function Footer() {
 	}, [prefersDarkMode])
 
 	return (
-		<footer className="row-start-3 flex flex-col sm:flex-row gap-6 flex-wrap items-center justify-center px-8">
+		<footer className="flex flex-col sm:flex-row gap-6 flex-wrap items-center justify-center px-8">
 			{/* GitHub */}
 		  <FooterLink
 				href={GitHub}

@@ -1,12 +1,9 @@
-import Footer from "./ui/footer/footer";
-
 export default function Home() {
   return (
-    <div>
-      <main>
-
-      </main>
-      <Footer/>
-    </div>
+    <main>
+      <div className="text-6xl font-bold">
+        Hangman!
+      </div>
+    </main>
   );
 }

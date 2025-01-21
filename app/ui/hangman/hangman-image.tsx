@@ -23,7 +23,7 @@ export default function HangmanImage(
 				height={950}
 				src="/hangman/stand.png"
 				alt="Hangman Stand"
-				className="absolute top-0 left-0"
+				className="absolute top-0 left-0 filter invert dark:invert-0"
 			/>
 			{hangmanImages.map((src, index) => {
 				return (
@@ -34,7 +34,7 @@ export default function HangmanImage(
 						src={src}
 						alt="Hangman Body Part"
 						className={clsx(
-							"absolute top-0 left-0",
+							"absolute top-0 left-0 filter invert dark:invert-0",
 							{
 								"hidden": index >= missedGuesses
 							}

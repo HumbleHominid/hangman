@@ -33,11 +33,11 @@ export default function Key({
 				setBgColor('');
 				break;
 		}
-	}, [keyState])
+	}, [keyState]);
 
 	return (
 		<div
-			className={`relative flex flex-col w-16 h-16 items-center border-x-4 border-t-2 border-b-8 rounded-md border-slate-900 dark:border-white ${bgColor} hover:cursor-pointer`}
+			className={`relative flex flex-col transition-all w-16 h-16 items-center border-x-4 border-t-2 border-b-8 hover:-translate-y-1 rounded-md border-slate-900 dark:border-white ${bgColor} hover:cursor-pointer active:translate-y-1`}
 			onClick={() => clickCallback(character)}
 		>
 				<span className="uppercase text-3xl m-auto text-center select-none">

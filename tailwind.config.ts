@@ -15,6 +15,9 @@ export default {
       gridTemplateRows: {
         layout: "auto 1fr auto"
       },
+      borderWidth: {
+        '10': '10px'
+      }
     },
   },
   plugins: [],

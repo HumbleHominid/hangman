@@ -30,7 +30,7 @@ export default function RootLayout({
         <Analytics/>
         <div className="grid grid-rows-layout min-h-lvh justify-items-stretch">
           {/* Content */}
-          <div className="p-4 m-auto">
+          <div className="p-4 m-auto w-11/12">
             {children}
           </div>
           {/* Footer */}

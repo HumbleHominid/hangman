@@ -25,14 +25,12 @@ export default function HangmanImage(
 	}, [missedGuesses]);
 
 	return (
-		<div className="relative">
-			<Image
-				width={696}
-				height={950}
-				src={hangmanImage}
-				alt="Hangman Image"
-				className="absolute top-0 left-0 filter invert dark:invert-0"
-			/>
-		</div>
+		<Image
+			width={696}
+			height={950}
+			src={hangmanImage}
+			alt="Hangman Image"
+			className="filter invert dark:invert-0"
+		/>
 	)
 }

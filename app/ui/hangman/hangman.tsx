@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react"
 import HangmanImage from "@/app/ui/hangman/hangman-image";
+import Keyboard from "@/app/ui/keyboard/keyboard";
 
 export default function Hangman() {
 	const [missedGuesses, setMissedGuesses] = useState(0);
@@ -19,12 +20,18 @@ export default function Hangman() {
 	});
 
 	return (
-		<div className="grid grid-rows-2">
+		<div className="flex">
 			{/* Place the hangman image on top */}
-			<HangmanImage
-				missedGuesses={missedGuesses}
-			/>
-			{/* Place the keyboard on bottom */}
+			<div className="w-4/12">
+				<HangmanImage
+					missedGuesses={missedGuesses}
+				/>
+			</div>
+			<div className="w-8/12 flex flex-col m-auto">
+				{/* The word and guesses goes here */}
+				{/* Keyboard below the guesses */}
+				<Keyboard/>
+			</div>
 		</div>
 	)
 }

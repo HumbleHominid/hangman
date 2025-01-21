@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export function userPrefersDarkMode() {
+export function usePrefersDarkMode() {
 	const [prefersDark, setPrefersDark] = useState(true);
 
 	useEffect(() => {

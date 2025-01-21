@@ -5,11 +5,11 @@ import { Email, GitHub, Resume } from '@/app/lib/ref-links';
 import { DocumentIcon, EnvelopeIcon } from '@heroicons/react/24/solid';
 import FooterLink from '@/app/ui/footer/footer-link';
 import { useEffect, useState } from 'react';
-import { userPrefersDarkMode } from '@/app/lib/hooks/user-prefers-dark';
+import { usePrefersDarkMode } from '@/app/lib/hooks/user-prefers-dark';
 
 export default function Footer() {
 	const footerLinkClass = "flex items-center gap-2 hover:underline hover:underline-offset-4";
-	const prefersDarkMode = userPrefersDarkMode();
+	const prefersDarkMode = usePrefersDarkMode();
 	const gitIcons = [
 		'/icons/github-mark-dark.svg',
 		'/icons/github-mark-white.svg'

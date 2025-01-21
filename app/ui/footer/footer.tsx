@@ -4,21 +4,24 @@ import Image from 'next/image';
 import { Email, GitHub, Resume } from '@/app/lib/ref-links';
 import { DocumentIcon, EnvelopeIcon } from '@heroicons/react/24/solid';
 import FooterLink from '@/app/ui/footer/footer-link';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { usePrefersDarkMode } from '@/app/lib/hooks/user-prefers-dark';
 
 export default function Footer() {
 	const footerLinkClass = "flex items-center gap-2 hover:underline hover:underline-offset-4";
 	const prefersDarkMode = usePrefersDarkMode();
-	const [gitIconSrc, setGitIconSrc] = useState('')
-
-	useEffect(() => {
-		const gitIcons = [
+	const gitIcons = useMemo(
+		() => [
 			'/icons/github-mark-dark.svg',
 			'/icons/github-mark-white.svg'
-		];
-		setGitIconSrc(gitIcons[prefersDarkMode ? 1: 0])
-	}, [prefersDarkMode])
+		],[]
+	);
+	// Assume we like dark mode
+	const [gitIconSrc, setGitIconSrc] = useState(gitIcons[0]);
+
+	useEffect(() => {
+		setGitIconSrc(gitIcons[prefersDarkMode ? 1: 0]);
+	}, [prefersDarkMode, gitIcons]);
 
 	return (
 		<footer className="flex flex-col sm:flex-row gap-6 flex-wrap items-center justify-center px-8">

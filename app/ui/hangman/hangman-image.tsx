@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 export default function HangmanImage(
 {
@@ -7,22 +7,22 @@ export default function HangmanImage(
 } : {
 	missedGuesses: number;
 }) {
-	const hangmanImages = [
-		'/hangman/initial.png',
-		'/hangman/one_miss.png',
-		'/hangman/two_miss.png',
-		'/hangman/three_miss.png',
-		'/hangman/four_miss.png',
-		'/hangman/five_miss.png',
-		'/hangman/six_miss.png',
-	];
+	const hangmanImages = useMemo(
+		() => [
+			'/hangman/initial.png',
+			'/hangman/one_miss.png',
+			'/hangman/two_miss.png',
+			'/hangman/three_miss.png',
+			'/hangman/four_miss.png',
+			'/hangman/five_miss.png',
+			'/hangman/six_miss.png',
+		], []
+	);
 	const [hangmanImage, setHangmanImage] = useState(hangmanImages[0])
 
 	useEffect(() => {
-		if (missedGuesses < 0) missedGuesses = 0;
-		if (missedGuesses >= hangmanImages.length) missedGuesses = hangmanImages.length - 1;
-		setHangmanImage(hangmanImages[missedGuesses]);
-	}, [missedGuesses]);
+		setHangmanImage(hangmanImages[Math.min(Math.max(missedGuesses, 0), hangmanImages.length - 1)]);
+	}, [missedGuesses, hangmanImages]);
 
 	return (
 		<Image

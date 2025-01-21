@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Footer from "./ui/footer/footer";
 
 export default function Home() {
   return (
@@ -6,9 +6,7 @@ export default function Home() {
       <main>
 
       </main>
-      <footer>
-
-      </footer>
+      <Footer/>
     </div>
   );
 }

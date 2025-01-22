@@ -72,7 +72,7 @@ export default function Hangman() {
 	}, []);
 
 	return (
-		<div className="flex flex-col lg:flex-row items-center gap-4 lg:gap-0">
+		<div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-4">
 			{/* Place the hangman image on top */}
 			<div className="w-4/12">
 				<HangmanImage

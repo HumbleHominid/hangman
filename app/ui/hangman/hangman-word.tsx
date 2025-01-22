@@ -15,11 +15,11 @@ export default function HangmanWord({
 				return (
 					<div
 						key={`${index}-${char}`}
-						className="flex h-16 md:h-20 border-b-2 border-b-slate-900 dark:border-b-white w-16 md:w-20"
+						className="flex h-8 sm:h-10 md:h-20 w-8 sm:w-10 md:w-20 border-b-2 border-b-slate-900 dark:border-b-white"
 					>
 						<span
 							className={clsx(
-								"uppercase text-5xl md:text-7xl font-medium m-auto text-center select-none",
+								"uppercase text-xl sm:text-3xl md:text-7xl font-medium m-auto text-center select-none",
 								{
 									'hidden': !isGameOver && !guessedLetters.includes(char),
 									'text-red-800' : isGameOver && !guessedLetters.includes(char)

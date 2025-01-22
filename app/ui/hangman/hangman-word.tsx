@@ -10,12 +10,12 @@ export default function HangmanWord({
 	isGameOver: boolean;
 }) {
 	return (
-		<div className="flex flex-wrap justify-center gap-2 min-h-min md:h-20">
+		<div className="flex flex-wrap justify-center gap-2 min-h-min">
 			{word.split('').map((char, index) => {
 				return (
 					<div
 						key={`${index}-${char}`}
-						className="flex h-16 border-b-2 border-b-slate-900 dark:border-b-white w-16"
+						className="flex h-16 md:h-20 border-b-2 border-b-slate-900 dark:border-b-white w-16 md:w-20"
 					>
 						<span
 							className={clsx(

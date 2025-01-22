@@ -62,8 +62,8 @@ export default function Hangman() {
 			const titleArr = slicedArr[0].split('•');
 			const wotdData:WotdData = {
 				word: titleArr[0].trim(),
-				wordClass: titleArr[1].trim(),
-				pronunciation: titleArr[2].trim(),
+				pronunciation: titleArr[1].trim(),
+				wordClass: titleArr[2].trim(),
 				definition: slicedArr[1].trim(),
 				examples: slicedArr.slice(2).map((str) => str.trim())
 			};
@@ -104,7 +104,7 @@ export default function Hangman() {
 				<div
 					className={clsx(
 						"transition-all overflow-hidden delay-700 duration-1000",
-						!isGameOver ? "max-h-0" : "max-h-52"
+						!isGameOver ? "max-h-0" : "max-h-96"
 					)}
 				>
 					<WordOfTheDay

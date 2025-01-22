@@ -10,7 +10,7 @@ export default function HangmanWord({
 	isGameOver: boolean;
 }) {
 	return (
-		<div className="flex gap-2 h-20">
+		<div className="flex flex-wrap justify-center gap-2 h-16 md:h-20">
 			{word.split('').map((char, index) => {
 				return (
 					<div
@@ -19,7 +19,7 @@ export default function HangmanWord({
 					>
 						<span
 							className={clsx(
-								"uppercase text-7xl font-medium m-auto text-center select-none",
+								"uppercase text-5xl md:text-7xl font-medium m-auto text-center select-none",
 								{
 									'hidden': !isGameOver && !guessedLetters.includes(char),
 									'text-red-800' : isGameOver && !guessedLetters.includes(char)

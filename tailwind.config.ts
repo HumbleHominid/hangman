@@ -17,6 +17,9 @@ export default {
       },
       borderWidth: {
         '10': '10px'
+      },
+      maxHeight: {
+        '2000': '2000px'
       }
     },
   },

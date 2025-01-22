@@ -22,7 +22,7 @@ export default function Key({
 	useEffect(() => {
 		switch (keyState) {
 			case KeyState.Correct:
-				setBgColor('bg-blue-300');
+				setBgColor('bg-blue-500');
 				break;
 			case KeyState.Incorrect:
 				setBgColor('bg-red-800');

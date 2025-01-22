@@ -103,7 +103,7 @@ export default function Hangman() {
 				{/* Wotd */}
 				<div
 					className={clsx(
-						"transition-all overflow-hidden delay-700 duration-1000",
+						"transition-all overflow-hidden delay-1000 duration-1000",
 						!isGameOver ? "max-h-0" : "max-h-96"
 					)}
 				>

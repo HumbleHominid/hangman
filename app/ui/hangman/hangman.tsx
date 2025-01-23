@@ -79,7 +79,7 @@ export default function Hangman() {
 					missedGuesses={missedGuesses}
 				/>
 			</div>
-			<div className="w-8/12 flex flex-col flex-1 m-auto items-center gap-8">
+			<div className="lg:w-8/12 flex flex-col flex-1 m-auto items-center gap-8">
 				{/* TODO: Skeleton for async requests */}
 				{/* The word and guesses goes here */}
 				<div>

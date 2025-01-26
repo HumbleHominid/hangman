@@ -1,3 +1,5 @@
+'use client'
+
 import Hangman from "@/app/ui/hangman/hangman";
 import { format } from 'date-fns';
 

@@ -9,7 +9,7 @@ export default function Keyboard({
 	word: string;
 	guessedLetters: string;
 }) {
-	const alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
+	const alphabet = 'abcdefghijklmnopqrstuvwxyz-'.split('');
 	return (
 		<div className="flex flex-wrap justify-center items-center gap-2">
 			{alphabet.map((letter) => {

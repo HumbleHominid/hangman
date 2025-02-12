@@ -11,7 +11,7 @@ export default function Keyboard({
 }) {
 	const alphabet = 'abcdefghijklmnopqrstuvwxyz-'.split('');
 	return (
-		<div className="flex flex-wrap justify-center items-center gap-2">
+		<div className="flex flex-wrap justify-center items-center gap-2 py-2">
 			{alphabet.map((letter) => {
 				return (
 					<Key

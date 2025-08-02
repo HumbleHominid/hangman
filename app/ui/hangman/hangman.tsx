@@ -61,13 +61,23 @@ export default function Hangman() {
 			const slicedArr = splitContent.slice(start, end);
 			const titleArr = slicedArr[0].split('•');
 			const wotdData:WotdData = {
-				word: titleArr[0].trim(),
+				word: titleArr[0].trim().toLowerCase(),
 				pronunciation: titleArr[1].trim(),
 				wordClass: titleArr[2].trim(),
 				definition: slicedArr[1].trim(),
 				examples: slicedArr.slice(2).map((str) => str.trim())
 			};
 			setWotd(wotdData);
+			// We only have the user play a-z but sometimes the WOTD contains things
+			// like spaces or -. In cases where we find characters that are not a-z,
+			// give them to the player as freebies
+			const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+			const seen_chars = new Set<string>();
+			for(const char of wotdData.word) {
+				if (seen_chars.has(char)) continue;
+				if (!alphabet.includes(char)) setGuessedLetters(guessedLetters + char);
+				seen_chars.add(char);
+			}
 		})();
 	}, []);
 

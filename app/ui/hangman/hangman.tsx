@@ -106,7 +106,7 @@ export default function Hangman() {
           )}
         >
           <Keyboard
-            keyClicked={handleKeyClicked}
+            keyClickedAction={handleKeyClicked}
             word={wotd.word}
             guessedLetters={guessedLetters}
           />

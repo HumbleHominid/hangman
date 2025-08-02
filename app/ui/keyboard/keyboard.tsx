@@ -1,11 +1,13 @@
+"use client";
+
 import Key, { KeyState } from "@/app/ui/keyboard/key";
 
 export default function Keyboard({
-  keyClicked,
+  keyClickedAction: keyClicked,
   word,
   guessedLetters,
 }: {
-  keyClicked: (char: string) => void;
+  keyClickedAction: (char: string) => void;
   word: string;
   guessedLetters: string;
 }) {
@@ -17,7 +19,7 @@ export default function Keyboard({
           <Key
             key={letter}
             character={letter}
-            clickCallback={keyClicked}
+            clickAction={keyClicked}
             keyState={
               guessedLetters.includes(letter)
                 ? word.includes(letter)

@@ -10,11 +10,11 @@ export enum KeyState {
 
 export default function Key({
   character,
-  clickCallback,
+  clickAction: clickCallback,
   keyState = KeyState.NotGuessed,
 }: {
   character: string;
-  clickCallback: (character: string) => void;
+  clickAction: (character: string) => void;
   keyState?: KeyState;
 }) {
   const [bgColor, setBgColor] = useState("");

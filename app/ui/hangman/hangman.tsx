@@ -61,7 +61,7 @@ export default function Hangman() {
 			const slicedArr = splitContent.slice(start, end);
 			const titleArr = slicedArr[0].split('•');
 			const wotdData:WotdData = {
-				word: "big ball-sack",//titleArr[0].trim().toLowerCase(),
+				word: titleArr[0].trim().toLowerCase(),
 				pronunciation: titleArr[1].trim(),
 				wordClass: titleArr[2].trim(),
 				definition: slicedArr[1].trim(),

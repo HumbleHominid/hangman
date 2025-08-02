@@ -17,15 +17,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
-        <Analytics/>
-        <div className="grid grid-rows-layout min-h-lvh justify-items-stretch">
+        <Analytics />
+        <div className="grid min-h-lvh grid-rows-layout justify-items-stretch">
           {/* Content */}
-          <div className="p-4 m-auto w-11/12 max-w-screen-xl">
-            {children}
-          </div>
+          <div className="m-auto w-11/12 max-w-screen-xl p-4">{children}</div>
           {/* Footer */}
           <div className="row-start-3 p-4">
-            <Footer/>
+            <Footer />
           </div>
         </div>
       </body>

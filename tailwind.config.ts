@@ -13,14 +13,14 @@ export default {
         foreground: "var(--foreground)",
       },
       gridTemplateRows: {
-        layout: "auto 1fr auto"
+        layout: "auto 1fr auto",
       },
       borderWidth: {
-        '10': '10px'
+        "10": "10px",
       },
       maxHeight: {
-        '2000': '2000px'
-      }
+        "2000": "2000px",
+      },
     },
   },
   plugins: [],

@@ -9,13 +9,19 @@ export default function HangmanWord({
 	guessedLetters?: string;
 	isGameOver: boolean;
 }) {
+	const nonBorderCharacters = " -";
 	return (
 		<div className="flex flex-wrap justify-center gap-2 min-h-min">
 			{word.split('').map((char, index) => {
 				return (
 					<div
 						key={`${index}-${char}`}
-						className="flex h-8 sm:h-10 lg:h-16 w-8 sm:w-10 lg:w-16 border-b-2 border-b-slate-900 dark:border-b-white"
+						className={clsx(
+							"flex h-8 sm:h-10 lg:h-16 w-8 sm:w-10 lg:w-16",
+							{
+								"border-b-2 border-b-slate-900 dark:border-b-white": !nonBorderCharacters.includes(char)
+							}
+						)}
 					>
 						<span
 							className={clsx(

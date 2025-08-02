@@ -11,7 +11,7 @@ export default function HangmanWord({
 }) {
   const nonBorderCharacters = " -";
   return (
-    <div className="flex min-h-min flex-wrap justify-center gap-2">
+    <div className="flex justify-center gap-2">
       {word.split("").map((char, index) => {
         return (
           <div

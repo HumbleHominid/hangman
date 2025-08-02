@@ -88,10 +88,10 @@ export default function Hangman() {
       <div className="w-4/12">
         <HangmanImage missedGuesses={missedGuesses} />
       </div>
-      <div className="m-auto flex flex-1 flex-col items-center gap-8 lg:w-8/12">
+      <div className="m-auto flex w-full flex-1 flex-col items-center gap-8 lg:w-8/12">
         {/* TODO: Skeleton for async requests */}
         {/* The word and guesses goes here */}
-        <div>
+        <div className="w-full">
           <HangmanWord
             word={wotd.word}
             guessedLetters={guessedLetters}
@@ -101,7 +101,7 @@ export default function Hangman() {
         {/* Keyboard below the guesses */}
         <div
           className={clsx(
-            "overflow-hidden transition-all duration-1000 ease-in-out",
+            "w-full overflow-hidden transition-all duration-1000 ease-in-out",
             isGameOver ? "max-h-0 p-0" : "max-h-lvh p-4",
           )}
         >
@@ -114,7 +114,7 @@ export default function Hangman() {
         {/* Wotd */}
         <div
           className={clsx(
-            "overflow-hidden transition-all delay-1000 duration-1000",
+            "w-full overflow-hidden transition-all delay-1000 duration-1000",
             !isGameOver ? "max-h-0" : "max-h-2000",
           )}
         >
